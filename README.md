@@ -16,3 +16,6 @@ app 作为一个启动器，启动后端服务，调用 WebView 显示界面。
 <img alt="unlock" src="https://gitee.com/luoshuqi/vault/raw/master/screenshots/unlock.jpg" width="200px">
 <img alt="home" src="https://gitee.com/luoshuqi/vault/raw/master/screenshots/home.jpg" width="200px">
 <img alt="add" src="https://gitee.com/luoshuqi/vault/raw/master/screenshots/add.jpg" width="200px">
+
+#### 下载
+[Android 64位](https://gitee.com/luoshuqi/vault/attach_files/924542/download/vault-0.1-arm64.apk)
