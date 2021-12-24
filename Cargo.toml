@@ -1,0 +1,25 @@
+[package]
+name = "vault"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+ws_jsonrpc = { git = "https://gitee.com/luoshuqi/ws-jsonrpc" }
+tokio = { version = "1", features = ["full"] }
+tokio-native-tls = "0"
+log = "0"
+env_logger = "0"
+base64 = "0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0", features = ["bundled"] }
+openssl = { version = "0", features = ["vendored"] }
+sha2 = "0"
+rand = "0"
+
+[target.'cfg(target_os = "android")'.dependencies]
+android_logger = "0"
+jni = "0"
