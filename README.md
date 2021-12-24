@@ -10,3 +10,11 @@
 前端使用 Vue，通过 WebSocket JSON-RPC 调用后端服务。
 
 app 作为一个启动器，启动后端服务，调用 WebView 显示界面。
+
+#### 截图
+
+![unlock](https://gitee.com/luoshuqi/vault/blob/master/screenshots/unlock.jpg)
+
+![home](https://gitee.com/luoshuqi/vault/blob/master/screenshots/home.jpg)
+
+![add](https://gitee.com/luoshuqi/vault/blob/master/screenshots/add.jpg)
