@@ -395,20 +395,17 @@ fn export_password(
 }
 
 #[rpc]
-async fn get_network_port(master_password: String) -> Result<Option<u16>, Error> {
-    decrypt_master_key(master_password.as_bytes())?;
+async fn get_network_port() -> Result<Option<u16>, Error> {
     Ok(query_network_port().await?)
 }
 
 #[rpc]
-async fn enable_network_access(master_password: String) -> Result<u16, Error> {
-    decrypt_master_key(master_password.as_bytes())?;
+async fn enable_network_access() -> Result<u16, Error> {
     Ok(listen_any_addr().await?)
 }
 
 #[rpc]
-fn disable_network_access(master_password: String) -> Result<(), Error> {
-    decrypt_master_key(master_password.as_bytes())?;
+fn disable_network_access() -> Result<(), Error> {
     Ok(close_any_addr()?)
 }
 

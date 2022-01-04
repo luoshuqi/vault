@@ -28,7 +28,6 @@
 <script>
 
 import {rpc} from "../lib/rpc";
-import {store} from "../lib/controller";
 import {mdiArrowLeft} from '@mdi/js';
 import {toast, getIp} from "../lib/util/compat";
 
@@ -45,7 +44,7 @@ export default {
     }
   },
   async beforeMount() {
-    this.port = await rpc.get_network_port(store.masterPassword);
+    this.port = await rpc.get_network_port();
     this.enabled = this.port !== null;
     this.ip = getIp();
     if (!this.ip) {
@@ -56,12 +55,12 @@ export default {
     async toggle() {
       if (this.enabled) {
         try {
-          this.port = await rpc.enable_network_access(store.masterPassword);
+          this.port = await rpc.enable_network_access();
         } catch (e) {
           this.enabled = false;
         }
       } else {
-        await rpc.disable_network_access(store.masterPassword);
+        await rpc.disable_network_access();
         this.port = null;
       }
     }

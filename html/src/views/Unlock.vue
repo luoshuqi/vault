@@ -11,13 +11,17 @@
           </v-btn>
         </v-card-actions>
       </v-card>
+      <div v-if="webView" class="ma-4" style="text-align: center">
+        <p v-if="port">电脑访问地址: <a :href="url">{{ url }}</a></p>
+        <v-btn v-else plain small @click="enableNetworkAccess">从电脑访问</v-btn>
+      </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
 import {store} from "../lib/controller";
-import {toast} from "../lib/util/compat";
+import {getIp, isWebView, toast} from "../lib/util/compat";
 import {rpc} from "../lib/rpc";
 
 export default {
@@ -25,12 +29,24 @@ export default {
   data() {
     return {
       password: '',
+      port: null,
+      ip: null,
     }
+  },
+  async beforeMount() {
+    this.port = await rpc.get_network_port();
+    this.ip = getIp();
   },
   computed: {
     style() {
       return this.$vuetify.breakpoint.xs ? {} :
           {width: '460px', margin: '0 auto', padding: '16px'};
+    },
+    url() {
+      return "https://" + this.ip + ':' + this.port;
+    },
+    webView() {
+      return isWebView();
     }
   },
   methods: {
@@ -42,6 +58,9 @@ export default {
       } else {
         toast('密码错误');
       }
+    },
+    async enableNetworkAccess() {
+      this.port = await rpc.enable_network_access();
     }
   }
 }

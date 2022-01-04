@@ -45,13 +45,13 @@ declare class Rpc {
     change_password(master_password: String, new_password: String): Promise<void>;
 
     // 获取可从网络访问的端口号
-    get_network_port(master_password: string): Promise<number|null>;
+    get_network_port(): Promise<number|null>;
 
     // 开启网络访问
-    enable_network_access(master_password: String): Promise<number>;
+    enable_network_access(): Promise<number>;
 
     // 关闭网络访问
-    disable_network_access(master_password: String): Promise<void>;
+    disable_network_access(): Promise<void>;
 }
 
 export declare var rpc: Rpc;
