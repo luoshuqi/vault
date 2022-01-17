@@ -80,7 +80,10 @@ struct NetworkServer {
 impl NetworkServer {
     async fn create() -> crate::Result<Self> {
         let acceptor = create_tls_acceptor()?;
-        let listener = TcpListener::bind("0.0.0.0:0").await.map_err(err!())?;
+        let listener = match TcpListener::bind("0.0.0.0:8888").await {
+            Ok(v) => v,
+            Err(_) => TcpListener::bind("0.0.0.0:0").await.map_err(err!())?,
+        };
         let addr = listener.local_addr().map_err(err!())?;
         info!("network server started at {}", addr);
         Ok(Self {

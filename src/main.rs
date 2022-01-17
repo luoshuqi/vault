@@ -11,6 +11,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         .enable_all()
         .build()
         .unwrap()
-        .block_on(start_server("127.0.0.1:8888", "/data/vault_data", |_| {}))?;
+        .block_on(start_server("127.0.0.1:8000", "/data/vault_data", |_| {}))?;
     Ok(())
 }
