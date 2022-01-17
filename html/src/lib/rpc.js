@@ -25,8 +25,8 @@ export const rpc = new Proxy(new Client(getUrl()), handler);
 function getUrl() {
     let host = location.host;
     if (process.env.NODE_ENV !== 'production') {
-        // 端口写死为 8888，方便测试
-        host = host.replace(/:\d+/, ":8888")
+        // 端口写死为 8000，方便测试
+        host = host.replace(/:\d+/, ":8000")
     }
     let protocol = location.protocol.replace(/^http/, 'ws');
     return protocol + '//' + host + '/ws';
